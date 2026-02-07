@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aksharse ke liye kuchh special... 🌹</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #fff0f5 0%, #ffc0cb 25%, #ffb6c1 50%, #ffc0cb 75%, #fff0f5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating Tulips Background */
+        .floating-tulips {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-tulip {
+            position: absolute;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            animation: floatTulip 8s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes floatTulip {
+            0% {
+                transform: translateY(110vh) rotate(0deg) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100%;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+            animation: fadeInPage 0.8s ease-out;
+        }
+
+        .page.active {
+            display: flex;
+        }
+
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Welcome Page Styles */
+        .welcome-container {
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .welcome-title {
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            color: #c71585;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(199, 21, 133, 0.2);
+            animation: bounceIn 1s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            60% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .akshara-name {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            color: #db7093;
+            font-weight: bold;
+            display: block;
+            margin: 20px 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .welcome-message {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: #8b4557;
+            line-height: 1.8;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            border: 2px solid #ffb6c1;
+        }
+
+        /* CSS Rose Animation */
+        .rose-container {
+            position: relative;
+            width: 200px;
+            height: 250px;
+            margin: 30px auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .rose-stem {
+            width: 8px;
+            height: 150px;
+            background: linear-gradient(to right, #228b22, #32cd32, #228b22);
+            border-radius: 4px;
+            position: absolute;
+            bottom: 0;
+            animation: stemSway 3s ease-in-out infinite;
+        }
+
+        @keyframes stemSway {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .rose-stem::before {
+            content: '';
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 20px;
+            background: linear-gradient(to right, #228b22, #32cd32, #228b22);
+            border-radius: 50%;
+        }
+
+        .rose-stem::after {
+            content: '';
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 15px;
+            background: linear-gradient(to right, #228b22, #32cd32, #228b22);
+            border-radius: 50%;
+        }
+
+        .rose-bud {
+            position: absolute;
+            bottom: 140px;
+            width: 60px;
+            height: 80px;
+            animation: budGrow 2s ease-out;
+        }
+
+        @keyframes budGrow {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .petal {
+            position: absolute;
+            width: 30px;
+            height: 40px;
+            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 50%, #db7093 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: inset -2px -2px 5px rgba(0,0,0,0.1);
+        }
+
+        .petal:nth-child(1) {
+            bottom: 0;
+            left: 15px;
+            transform: rotate(-30deg);
+        }
+
+        .petal:nth-child(2) {
+            bottom: 10px;
+            left: 5px;
+            transform: rotate(-60deg);
+        }
+
+        .petal:nth-child(3) {
+            bottom: 10px;
+            right: 5px;
+            transform: rotate(60deg);
+        }
+
+        .petal:nth-child(4) {
+            bottom: 20px;
+            left: 15px;
+            transform: rotate(0deg);
+        }
+
+        .petal-center {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 35px;
+            background: linear-gradient(to bottom, #ff1493, #ff69b4);
+            border-radius: 50% 50% 40% 40%;
+            z-index: 5;
+        }
+
+        .rose-leaves {
+            position: absolute;
+            bottom: 50px;
+            width: 100%;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 50px;
+            height: 25px;
+            background: linear-gradient(to right, #228b22, #32cd32);
+            border-radius: 0 70% 0 70%;
+        }
+
+        .leaf.left {
+            left: -30px;
+            transform: rotate(-30deg);
+            animation: leafSway 2s ease-in-out infinite;
+        }
+
+        .leaf.right {
+            right: -30px;
+            transform: rotate(30deg) scaleX(-1);
+            animation: leafSway 2s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes leafSway {
+            0%, 100% { transform: rotate(-30deg); }
+            50% { transform: rotate(-35deg); }
+        }
+
+        .leaf.right {
+            animation: leafSwayRight 2s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes leafSwayRight {
+            0%, 100% { transform: rotate(30deg) scaleX(-1); }
+            50% { transform: rotate(35deg) scaleX(-1); }
+        }
+
+        /* Buttons */
+        .btn {
+            padding: clamp(12px, 3vw, 18px) clamp(30px, 8vw, 50px);
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: linear-gradient(145deg, #c71585, #db7093);
+            color: white;
+            box-shadow: 0 4px 15px rgba(199, 21, 133, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(199, 21, 133, 0.5);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(145deg, #ffb6c1, #ffc0cb);
+            color: #c71585;
+            border: 2px solid #c71585;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(145deg, #ff9eb5, #ffb6c1);
+            transform: translateY(-3px);
+        }
+
+        /* Teasing Page Styles */
+        .tease-container {
+            text-align: center;
+            max-width: 450px;
+        }
+
+        .tease-emoji {
+            font-size: clamp(3rem, 10vw, 5rem);
+            margin-bottom: 20px;
+            animation: shake 0.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .tease-text {
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            color: #8b4557;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+
+        .tease-highlight {
+            color: #c71585;
+            font-weight: bold;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            display: block;
+            margin: 15px 0;
+        }
+
+        /* Final Page Styles */
+        .final-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .final-title {
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            color: #c71585;
+            margin-bottom: 25px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .final-message {
+            background: rgba(255, 255, 255, 0.85);
+            padding: clamp(20px, 5vw, 30px);
+            border-radius: 20px;
+            border: 3px solid #ffb6c1;
+            margin: 20px 0;
+        }
+
+        .final-message p {
+            font-size: clamp(0.95rem, 3vw, 1.2rem);
+            color: #5a3a42;
+            line-height: 2;
+            margin: 10px 0;
+        }
+
+        .tulip-decoration {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin: 15px 0;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Tulip SVG/CSS Flower Animation */
+        .tulip-animation {
+            width: 100px;
+            height: 120px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .tulip-flower {
+            position: relative;
+            width: 60px;
+            height: 80px;
+            margin: 0 auto;
+        }
+
+        .tulip-head {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff69b4, #ff1493, #db7093);
+            border-radius: 50% 50% 40% 40%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: inset -3px -3px 8px rgba(0,0,0,0.1);
+            animation: tulipBloom 3s ease-in-out infinite;
+        }
+
+        @keyframes tulipBloom {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+        }
+
+        .tulip-head::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 15px;
+            background: linear-gradient(to bottom, #fff5f5, #ff69b4);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .tulip-stem {
+            width: 8px;
+            height: 60px;
+            background: linear-gradient(to right, #228b22, #32cd32, #228b22);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 4px;
+        }
+
+        .tulip-leaf {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            background: linear-gradient(to right, #228b22, #32cd32);
+            border-radius: 0 70% 0 70%;
+            bottom: 15px;
+        }
+
+        .tulip-leaf.left {
+            left: 5px;
+            transform: rotate(-20deg);
+            animation: tulipLeafWave 2s ease-in-out infinite;
+        }
+
+        .tulip-leaf.right {
+            right: 5px;
+            transform: rotate(20deg) scaleX(-1);
+            animation: tulipLeafWaveRight 2s ease-in-out infinite 0.3s;
+        }
+
+        @keyframes tulipLeafWave {
+            0%, 100% { transform: rotate(-20deg); }
+            50% { transform: rotate(-25deg); }
+        }
+
+        @keyframes tulipLeafWaveRight {
+            0%, 100% { transform: rotate(20deg) scaleX(-1); }
+            50% { transform: rotate(25deg) scaleX(-1); }
+        }
+
+        /* Confetti for Final Page */
+        .confetti {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            top: -20px;
+            animation: confettiFall 4s linear forwards;
+            z-index: 1000;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 15px;
+            color: #c71585;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            opacity: 0.8;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Progress indicator */
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ffb6c1;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #c71585;
+            transform: scale(1.2);
+        }
+
+        .dot.completed {
+            background: #db7093;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .btn {
+                padding: 12px 35px;
+                margin: 8px;
+            }
+            
+            .page {
+                padding: 15px;
+            }
+        }
+
+        @media (max-height: 600px) {
+            .rose-container {
+                transform: scale(0.8);
+                margin: 10px auto;
+            }
+            
+            .tulip-animation {
+                transform: scale(0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Tulips Background -->
+    <div class="floating-tulips" id="floatingTulips"></div>
+
+    <!-- Page 1: Welcome Page -->
+    <div class="page active" id="page1">
+        <div class="welcome-container">
+            <!-- CSS Rose Animation -->
+            <div class="rose-container">
+                <div class="rose-bud">
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal-center"></div>
+                </div>
+                <div class="rose-stem">
+                    <div class="rose-leaves">
+                        <div class="leaf left"></div>
+                        <div class="leaf right"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="welcome-title">Hii Akshara! 🌹</h1>
+            
+            <p class="welcome-message">
+                Kuch toh special bhejna chahiye na Rose Day pe...<br><br>
+                Toh dekho kya banaya maine sirf aapke liye! 💐<br><br>
+                Bilkul perfect nahi hai, but thoda cute toh hai! 😅
+            </p>
+
+            <button class="btn btn-primary" onclick="goToPage(2)">
+                Dekhte Hain! 👀
+            </button>
+        </div>
+    </div>
+
+    <!-- Page 2: First Tease -->
+    <div class="page" id="page2">
+        <div class="tease-container">
+            <div class="tease-emoji">🤔</div>
+            
+            <p class="tease-text">
+                Wait wait wait...<br><br>
+                <span class="tease-highlight">"Kya aapko sachme dekhna hai?"</span><br><br>
+                Kyuki jo bhi aane wala hai... bohot hi... bohot khaas hai! 😏
+            </p>
+
+            <p class="tease-text" style="font-size: clamp(0.9rem, 3vw, 1.1rem);">
+                (Bas thoda darr raha hu, kahi aap has nahi dein! 😅)
+            </p>
+
+            <button class="btn btn-primary" onclick="goToPage(3)">
+                Haan Dekhungi! 😊
+            </button>
+            <br>
+            <button class="btn btn-secondary" onclick="goToPage(1)">
+                Pehle Batao! 😟
+            </button>
+        </div>
+    </div>
+
+    <!-- Page 3: Second Tease -->
+    <div class="page" id="page3">
+        <div class="tease-container">
+            <div class="tease-emoji">😬</div>
+            
+            <p class="tease-text">
+                <span class="tease-highlight">"Pakka?"</span><br><br>
+                Bilkul pakka? 100% sure?<br>
+                Kyuki ek baar agar aap dekh liya toh...<br>
+                Wapis nahi kar payenge! 😰
+            </p>
+
+            <p class="tease-text" style="color: #c71585; font-style: italic;">
+                (Main sharma raha hu thoda, aap mat dekhiye yeh part! 😅)
+            </p>
+
+            <button class="btn btn-primary" onclick="goToPage(4)">
+                Haan Pakka! 💪
+            </button>
+            <br>
+            <button class="btn btn-secondary" onclick="goToPage(2)">
+                Thoda Aur Batao...
+            </button>
+        </div>
+    </div>
+
+    <!-- Page 4: Third Tease -->
+    <div class="page" id="page4">
+        <div class="tease-container">
+            <div class="tease-emoji">🎭</div>
+            
+            <p class="tease-text">
+                Acha ab batao...<br><br>
+                <span class="tease-highlight">"Aapko pyaar kya uparwala banana hai?"</span><br><br>
+                Jo bhi hai, bohot mehnat se banaya hai!<br>
+                2 ghante lagaye hain ispe! 😅
+            </p>
+
+            <p class="tease-text" style="font-size: clamp(0.9rem, 3vw, 1.1rem);">
+                (Time pass tha, toh kya karu! 😄)
+            </p>
+
+            <button class="btn btn-primary" onclick="goToPage(5)">
+                Ab Dikha Do! 🙃
+            </button>
+            <br>
+            <button class="btn btn-secondary" onclick="goToPage(3)">
+                Wait...
+            </button>
+        </div>
+    </div>
+
+    <!-- Page 5: Fourth Tease -->
+    <div class="page" id="page5">
+        <div class="tease-container">
+            <div class="tease-emoji">😰</div>
+            
+            <p class="tease-text">
+                Ek aur baat...<br><br>
+                <span class="tease-highlight">"Agar boring lagta hai toh mat bolna!"</span><br><br>
+                Please! 🙏<br>
+                Mera ego ek dum tut jayega! 💔
+            </p>
+
+            <p class="tease-text" style="font-size: clamp(0.9rem, 3vw, 1.1rem);">
+                (Bas itna hi kar sakte ho please! 😅)
+            </p>
+
+            <button class="btn btn-primary" onclick="goToPage(6)">
+                Okay Okay! 😄
+            </button>
+            <br>
+            <button class="btn btn-secondary" onclick="goToPage(4)">
+                Thoda Rukeungi...
+            </button>
+        </div>
+    </div>
+
+    <!-- Page 6: Fifth Tease - Final Warning -->
+    <div class="page" id="page6">
+        <div class="tease-container">
+            <div class="tease-emoji">😈</div>
+            
+            <p class="tease-text">
+                Last warning aapko! ⚠️<br><br>
+                <span class="tease-highlight">"Ab back nahi kar sakte!"</span><br><br>
+                Jo dekha woh Rah Gaya!<br>
+                Aapki aankhon pe chadh gaya! 👀
+            </p>
+
+            <p class="tease-text" style="color: #c71585; font-style: italic;">
+                (Ab toh pakka dekhogi? Please! 🙏)
+            </p>
+
+            <button class="btn btn-primary" onclick="goToPage(7)">
+                Chal Dil Se! 💖
+            </button>
+            <br>
+            <button class="btn btn-secondary" onclick="goToPage(5)">
+                Ek Aur Minute...
+            </button>
+        </div>
+    </div>
+
+    <!-- Page 7: Final Rose Animation Page -->
+    <div class="page" id="page7">
+        <div class="final-container">
+            <h2 class="final-title">🌹 Happy Rose Day, Akshara! 🌷</h2>
+
+            <!-- Animated Tulip -->
+            <div class="tulip-animation">
+                <div class="tulip-flower">
+                    <div class="tulip-head"></div>
+                    <div class="tulip-stem"></div>
+                    <div class="tulip-leaf left"></div>
+                    <div class="tulip-leaf right"></div>
+                </div>
+            </div>
+
+            <div class="final-message">
+                <p>
+                    Aapko Rose Day ki bohot bohot shubhkamnaye! 🌹<br><br>
+                    Aap jaise logon ke liye toh har din rose day jaisa hi hai... 
+                    kyuki aap khud ek pushp ki tarah khil rahi hain! 🌸<br><br>
+                    Aapka din itna hi khoobsurat rahe jitna aap hain! ✨<br><br>
+                    Aur haan, aapko yeh jo dikha... 
+                    matlab itna hi kar sakta hu, forgive kar dena! 😅
+                </p>
+
+                <div class="tulip-decoration">🌷💐🌸🌺🌹</div>
+
+                <p>
+                    - From: Jo bhi yeh bana hai! 😄
+                </p>
+            </div>
+
+            <button class="btn btn-primary" onclick="restartExperience()">
+                🔄 Doobara Dekhna Chahta Hu!
+            </button>
+        </div>
+    </div>
+
+    <div class="footer">
+        Made with ❤ (aur thodi majboori!) 😅
+    </div>
+
+    <script>
+        // =====================
+        // Floating Tulips Background
+        // =====================
+        const tulipEmojis = ['🌷', '🌸', '🌺', '🌹', '💐'];
+        const floatingTulipsContainer = document.getElementById('floatingTulips');
+
+        function createFloatingTulip() {
+            const tulip = document.createElement('div');
+            tulip.className = 'floating-tulip';
+            tulip.textContent = tulipEmojis[Math.floor(Math.random() * tulipEmojis.length)];
+            tulip.style.left = Math.random() * 100 + '%';
+            tulip.style.animationDuration = (Math.random() * 5 + 10) + 's';
+            tulip.style.animationDelay = Math.random() * 3 + 's';
+            tulip.style.fontSize = (Math.random() * 1 + 1.3) + 'rem';
+            floatingTulipsContainer.appendChild(tulip);
+
+            setTimeout(() => tulip.remove(), 20000);
+        }
+
+        setInterval(createFloatingTulip, 2000);
+
+        // =====================
+        // Page Navigation
+        // =====================
+        let currentPage = 1;
+        const totalPages = 7;
+
+        function goToPage(pageNum) {
+            if (pageNum < 1 || pageNum > totalPages) return;
+            
+            // Hide current page
+            document.getElementById(`page${currentPage}`).classList.remove('active');
+            
+            // Show new page
+            currentPage = pageNum;
+            document.getElementById(`page${currentPage}`).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Trigger confetti on final page
+            if (pageNum === 7) {
+                setTimeout(showConfetti, 500);
+            }
+        }
+
+        function restartExperience() {
+            // Hide final page
+            document.getElementById('page7').classList.remove('active');
+            
+            // Go back to page 1
+            currentPage = 1;
+            document.getElementById('page1').classList.add('active');
+        }
+
+        // =====================
+        // Confetti Effect for Final Page
+        // =====================
+        function showConfetti() {
+            const colors = ['#ff69b4', '#ff1493', '#db7093', '#c71585', '#ffc0cb', '#fff', '#ffb6c1', '#ff85a2'];
+            const shapes = ['50%', '2px', '4px', '6px'];
+            
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    confetti.style.width = (Math.random() * 10 + 8) + 'px';
+                    confetti.style.height = confetti.style.width;
+                    confetti.style.borderRadius = shapes[Math.floor(Math.random() * shapes.length)];
+                    document.body.appendChild(confetti);
+
+                    setTimeout(() => confetti.remove(), 6000);
+                }, i * 40);
+            }
+        }
+
+        // =====================
+        // Initialize
+        // =====================
+        // Start with initial floating tulips
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createFloatingTulip, i * 500);
+        }
+
+        // Add some interaction sounds (optional visual feedback)
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                ripple.style.cssText = `
+                    position: absolute;
+                    background: rgba(255, 255, 255, 0.6);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: rippleEffect 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple animation
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes rippleEffect {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                if (currentPage < totalPages) {
+                    goToPage(currentPage + 1);
+                }
+            } else if (e.key === 'ArrowLeft') {
+                if (currentPage > 1) {
+                    goToPage(currentPage - 1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
